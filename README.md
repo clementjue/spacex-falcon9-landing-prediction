@@ -51,14 +51,18 @@ How to read this table: with 18 test launches, one launch is worth 5.6 points of
 
 ```bash
 pip install -r requirements.txt
-jupyter lab
+jupyter lab                                          # notebooks
+python 07_SpaceX_Interactive_Visual_Analytics_Plotly.py   # dashboard on http://127.0.0.1:8050
 ```
 
-Notebooks 04 and 08 were re-executed in November 2026 with Python 3.13, pandas 2.2 and scikit-learn 1.9. The other notebooks keep the outputs of the original run in the IBM lab environment. Notebooks 03, 05 and 06 still use JupyterLite's `piplite` and `js.fetch` to load data, so these cells need `pd.read_csv(url)` to run locally. The Dash app was written for Dash 1.x.
+Notebooks 02 to 08 and the dashboard were re-run in November 2026 with Python 3.13, pandas 2.2, scikit-learn 1.9 and Dash 4.5. Data is loaded from the IBM course files and a fixed Wikipedia revision, so no local data file is needed.
+
+Notebook 01 keeps the outputs of the original 2024 run. It calls the public SpaceX API (api.spacexdata.com), which did not respond when tested on 3 November 2026 (HTTP 522).
 
 ## Changelog
 
-- **2026-11:** fixed notebook 08, where the decision tree's test score and confusion matrix were computed with the SVM model. Updated the SQL queries of notebook 04 to the current version of the IBM dataset (ISO dates, renamed landing outcome column) and removed the lab-specific Db2 connection cell. Replaced JupyterLite-only code in 04 and 08 with standard Python and re-executed both.
+- **2026-11, notebooks 04 and 08:** fixed notebook 08, where the decision tree's test score and confusion matrix were computed with the SVM model. Updated the SQL queries of notebook 04 to the current version of the IBM dataset (ISO dates, renamed landing outcome column) and removed the lab-specific Db2 connection cell. Replaced JupyterLite-only code in 04 and 08 with standard Python and re-executed both.
+- **2026-11, dashboard and remaining notebooks:** ported the Dash app to Dash 4 and made it load its data from the course file. Fixed its pie charts: the per-site chart could swap the success and failure labels, and the all-sites chart showed average success rates instead of success counts. Notebooks 03, 05 and 06 now load data with `pd.read_csv`; notebook 02 sends a User-Agent, which Wikipedia now requires. All four re-executed.
 - **2024-12:** first version.
 
 ## Data and credits
